@@ -43,3 +43,12 @@ solo_texture_data = {
         'size':(1.5,3)
     }
 }
+
+
+
+world1 = {
+    'block1':{
+        'position':(0,0),
+        'type':'grass'
+    }
+}

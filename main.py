@@ -9,6 +9,7 @@ import textures.texture_manager as texture_manager
 import scenes.scene_manager as scene_manager
 from scenes.level1 import Level1
 from scenes.level2 import Level2
+import events.event_handler as event_handler
 
 class Game:
     def __init__(self) -> None:
@@ -19,6 +20,7 @@ class Game:
             (globals.screen_width, globals.screen_height), # Screen size
             pygame.RESIZABLE # Screen is resizable
         )
+        pygame.display.set_caption('When Stars Align') # Game title
 
         # Initialize textures in texture manager
         texture_manager.init_textures()
@@ -45,8 +47,10 @@ class Game:
 
     def update(self) -> None:
         # Event handling
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
+        event_handler.poll_events()
+
+        # Quit game
+        if event_handler.quit_game():
                 self.running = False
 
         # Scene update
