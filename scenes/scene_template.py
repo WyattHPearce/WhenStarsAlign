@@ -2,7 +2,7 @@
 # Third-Party Imports
 import pygame
 # Local Imports
-import globals as globals
+import globals
 from entity import Entity
 import textures.texture_manager as texture_manager
 

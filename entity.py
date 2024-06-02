@@ -2,7 +2,7 @@
 # Third-Party Imports
 import pygame
 # Local Imports
-import globals as globals
+import globals
 
 # Custom Sprite Class
 class Entity(pygame.sprite.Sprite):

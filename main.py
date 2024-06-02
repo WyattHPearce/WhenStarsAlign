@@ -3,7 +3,7 @@ import sys
 # Third-Party Imports
 import pygame
 # Local Imports
-import globals as globals
+import globals
 import textures.texture_manager as texture_manager
 # Scenes
 import scenes.scene_manager as scene_manager
@@ -48,10 +48,10 @@ class Game:
     def update(self) -> None:
         # Event handling
         event_handler.poll_events()
-
-        # Quit game
-        if event_handler.quit_game():
-                self.running = False
+        if event_handler.has_quit():
+            self.running = False
+        if event_handler.window_resized():
+            globals.update_window_size_globals(self)
 
         # Scene update
         self.scenes[scene_manager.get_state()].update()
@@ -70,5 +70,6 @@ class Game:
         sys.exit()
 
 if __name__ == "__main__":
+
     game = Game()
     game.run()

@@ -2,7 +2,7 @@
 # Third-Party Imports
 import pygame
 # Local Imports
-import globals as globals
+import globals
 from scenes.scene_template import SceneTemplate
 from entity import Entity
 

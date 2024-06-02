@@ -9,8 +9,7 @@ solo_textures: dict = None
 block_textures: dict = None
 
 def init_textures():
-    """Initializes module texture variables using module functions
-    """
+    """Initializes module texture variables using module functions."""
     global solo_textures, block_textures
     if solo_textures is None:
         solo_textures = gen_solo_textures(texture_data.solo_texture_data)
@@ -18,8 +17,7 @@ def init_textures():
         block_textures = gen_atlas_textures(texture_data.block_texture_data, 'resources/block_atlas.png', 16, 16)
 
 def gen_solo_textures(data: dict) -> dict:
-    """Generates individual textures from texture data and returns them in a dictionary
-    """
+    """Generates individual textures from texture data and returns them in a dictionary."""
     textures: dict = {}
 
     # Populates textures to be returned
@@ -30,8 +28,7 @@ def gen_solo_textures(data: dict) -> dict:
     return textures
 
 def gen_atlas_textures(data: dict, atlas_file_path: str, atlas_width: int, atlas_height: int) -> dict:
-    """Generates textures from an atlas image and returns them in a dictionary
-    """
+    """Generates textures from an atlas image and returns them in a dictionary."""
     textures: dict = {}
 
     # Conforms atlas image size to tilesize
