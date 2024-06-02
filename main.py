@@ -3,8 +3,9 @@ import sys
 # Third-Party Imports
 import pygame
 # Local Imports
-from globals import *
-from scenes.scene import Scene
+import globals as globals
+from scene import Scene
+import textures.texture_manager as texture_manager
 
 class Game:
     def __init__(self) -> None:
@@ -12,9 +13,12 @@ class Game:
 
         # Create Screen
         self.screen: pygame.Surface = pygame.display.set_mode(
-            (screen_width, screen_height), # Screen size
+            (globals.screen_width, globals.screen_height), # Screen size
             pygame.RESIZABLE # Screen is resizable
         )
+
+        # Initialize textures in texture manager
+        texture_manager.init_textures()
 
         # Create clock
         self.clock = pygame.time.Clock()
@@ -38,10 +42,9 @@ class Game:
 
         # Scene update
         self.dev_scene.update()
-        
 
         # Enforcing max framerate
-        self.clock.tick(max_framerate)
+        self.clock.tick(globals.max_framerate)
         # Updating the display
         pygame.display.update()
 
