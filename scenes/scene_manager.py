@@ -2,7 +2,7 @@
 # Third-Party Imports
 # Local Imports
 from scenes.levels.menu import Menu
-from scenes.levels.world import World
+from scenes.levels.world1 import World1
 
 current_scene: str = None
 scenes: dict = None
@@ -11,7 +11,7 @@ def init_scenes(game) -> None:
     global scenes
     scenes = {
         'menu':Menu(game),
-        'world':World(game)
+        'world1':World1(game)
     }
 
 def set_scene(scene_name: str) -> None:

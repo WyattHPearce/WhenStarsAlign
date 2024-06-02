@@ -12,8 +12,4 @@ class Menu(SceneTemplate):
         self.background_color = (255,255,200)
 
     def init_objects(self) -> None:
-        Entity(
-            [self.sprites], 
-            image=self.block_atlas_textures['grass'], 
-            position=(globals.TILESIZE, 0)
-        )
+        pass
