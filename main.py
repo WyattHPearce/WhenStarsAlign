@@ -5,11 +5,9 @@ import pygame
 # Local Imports
 import globals
 import textures.texture_manager as texture_manager
+import events.event_handler as event_handler
 # Scenes
 import scenes.scene_manager as scene_manager
-from scenes.level1 import Level1
-from scenes.level2 import Level2
-import events.event_handler as event_handler
 
 class Game:
     def __init__(self) -> None:
@@ -30,22 +28,27 @@ class Game:
 
         self.running: bool = True
 
-        # Scenes
-        scene_manager.set_state('level1')
-        self.level1 = Level1(self)
-        self.level2 = Level2(self)
-        self.scenes = {
-            'level1':self.level1,
-            'level2':self.level2
-        }
+        # Initialize game scenes
+        scene_manager.init_scenes(self)
+        scene_manager.set_scene('menu')
 
     def run(self) -> None:
         while self.running:
+            self.handle_events()
             self.update()
             self.draw()
         self.close()
 
     def update(self) -> None:
+        # Scene update
+        scene_manager.update_scene(scene_manager.current_scene)
+
+        # Enforcing max framerate
+        self.clock.tick(globals.max_framerate)
+        # Updating the display
+        pygame.display.update()
+
+    def handle_events(self) -> None:
         # Event handling
         event_handler.poll_events()
         if event_handler.has_quit():
@@ -53,17 +56,9 @@ class Game:
         if event_handler.window_resized():
             globals.update_window_size_globals(self)
 
-        # Scene update
-        self.scenes[scene_manager.get_state()].update()
-
-        # Enforcing max framerate
-        self.clock.tick(globals.max_framerate)
-        # Updating the display
-        pygame.display.update()
-
     def draw(self) -> None:
         # Scene draw
-        self.scenes[scene_manager.get_state()].draw()
+        scene_manager.draw_scene(scene_manager.current_scene)
 
     def close(self) -> None:
         pygame.quit()

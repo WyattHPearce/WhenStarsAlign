@@ -1,12 +1,25 @@
 # Standard Imports
 # Third-Party Imports
 # Local Imports
+from scenes.levels.menu import Menu
+from scenes.levels.world import World
 
-current_state: str = None
+current_scene: str = None
+scenes: dict = None
 
-def get_state() -> str:
-    return current_state
+def init_scenes(game) -> None:
+    global scenes
+    scenes = {
+        'menu':Menu(game),
+        'world':World(game)
+    }
 
-def set_state(state: str) -> None:
-    global current_state
-    current_state = state
+def set_scene(scene_name: str) -> None:
+    global current_scene
+    current_scene = scene_name
+
+def update_scene(scene_name: str) -> None:
+    scenes[scene_name].update()
+
+def draw_scene(scene_name: str) -> None:
+    scenes[scene_name].draw()

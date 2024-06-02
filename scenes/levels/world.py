@@ -7,7 +7,7 @@ from scenes.scene_template import SceneTemplate
 from entity import Entity
 import events.event_handler as event_handler
 
-class Level1(SceneTemplate):
+class World(SceneTemplate):
     def __init__(self, game) -> None:
         super().__init__(game)
         self.background_color = (200,255,255)
@@ -23,8 +23,3 @@ class Level1(SceneTemplate):
             image=self.block_atlas_textures['player_legs'], 
             position=(globals.TILESIZE,globals.TILESIZE*2)
         )
-
-    def update(self) -> None:
-        super().update()
-        if event_handler.key_down(pygame.K_SPACE):
-            print('pressed space')
