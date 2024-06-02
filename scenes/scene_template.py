@@ -6,7 +6,7 @@ import globals as globals
 from entity import Entity
 import textures.texture_manager as texture_manager
 
-class Scene:
+class SceneTemplate:
     def __init__(self, game) -> None:
         self.game = game # Access to game
         self.background_color = (255,255,255)
@@ -18,9 +18,10 @@ class Scene:
         # Groups
         self.sprites = pygame.sprite.Group()
 
-        print(self.game.screen)
+        self.init_objects()
 
-        Entity([self.sprites], image=self.block_atlas_textures['dirt2'])
+    def init_objects(self) -> None:
+        pass
 
     def update(self) -> None:
         self.sprites.update()

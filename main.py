@@ -4,8 +4,11 @@ import sys
 import pygame
 # Local Imports
 import globals as globals
-from scene import Scene
 import textures.texture_manager as texture_manager
+# Scenes
+import scenes.scene_manager as scene_manager
+from scenes.level1 import Level1
+from scenes.level2 import Level2
 
 class Game:
     def __init__(self) -> None:
@@ -26,7 +29,13 @@ class Game:
         self.running: bool = True
 
         # Scenes
-        self.dev_scene = Scene(self)
+        scene_manager.set_state('level1')
+        self.level1 = Level1(self)
+        self.level2 = Level2(self)
+        self.scenes = {
+            'level1':self.level1,
+            'level2':self.level2
+        }
 
     def run(self) -> None:
         while self.running:
@@ -41,7 +50,7 @@ class Game:
                 self.running = False
 
         # Scene update
-        self.dev_scene.update()
+        self.scenes[scene_manager.get_state()].update()
 
         # Enforcing max framerate
         self.clock.tick(globals.max_framerate)
@@ -50,7 +59,7 @@ class Game:
 
     def draw(self) -> None:
         # Scene draw
-        self.dev_scene.draw()
+        self.scenes[scene_manager.get_state()].draw()
 
     def close(self) -> None:
         pygame.quit()
