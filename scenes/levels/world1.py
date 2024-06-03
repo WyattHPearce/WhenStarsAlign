@@ -21,5 +21,8 @@ class World1(SceneTemplate):
         )
 
     def update(self) -> None:
+        self.block.position.x += (3 * globals.delta_time)
+
         super().update()
-        self.block.rect.x += (3 * globals.delta_time)
+        
+        

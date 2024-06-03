@@ -6,7 +6,8 @@ import time
 # Graphics Settings
 screen_width: int = 1280
 screen_height: int = 720
-max_framerate: int = 60
+max_framerate: int = 120
+
 # Framerate independence
 target_framerate: int = 60
 delta_time: float = 0.0

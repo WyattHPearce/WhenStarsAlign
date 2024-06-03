@@ -33,7 +33,7 @@ class Game:
 
         # Initialize game scenes
         scene_manager.init_scenes(self)
-        scene_manager.set_scene('world1')
+        scene_manager.set_scene('menu')
 
     def run(self) -> None:
         while self.running:

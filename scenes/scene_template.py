@@ -17,6 +17,7 @@ class SceneTemplate:
 
         # Groups
         self.sprites = pygame.sprite.Group()
+        self.user_interface = pygame.sprite.Group()
 
         self.init_objects()
 
@@ -25,8 +26,10 @@ class SceneTemplate:
 
     def update(self) -> None:
         self.sprites.update()
+        self.user_interface.update()
 
     def draw(self) -> None:
         self.game.screen.fill((self.background_color))
 
         self.sprites.draw(self.game.screen)
+        self.user_interface.draw(self.game.screen)

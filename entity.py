@@ -9,8 +9,13 @@ class Entity(pygame.sprite.Sprite):
     def __init__(self, groups, image = pygame.Surface((globals.TILESIZE, globals.TILESIZE)), position: tuple = (0,0)) -> None:
         super().__init__(groups)
         self.image: pygame.Surface = image
-        self.rect: pygame.rect = image.get_rect(topleft = position)
+        self.position = pygame.math.Vector2(position)
+        self.rect: pygame.Rect = image.get_rect(topleft = self.position)
         
     def update(self) -> None:
-        pass
+        # Prevents stutter from delta_time float precision issues
+        self.rect.topleft = (
+            round(self.position.x),
+            round(self.position.y)
+        )
 
