@@ -19,10 +19,16 @@ class UIElement(Entity):
         self.original_screen_size = (globals.screen_width, globals.screen_height)
 
     def update(self) -> None:
+        """Augmentation of super class update method."""
         super().update()
         self.scale_to_screen((globals.screen_width, globals.screen_height))
     
-    def scale_to_screen(self, new_screen_size) -> None:
+    def scale_to_screen(self, new_screen_size: tuple) -> None:
+        """Takes a new screensize and rescales / re-positions the UIElement.
+
+        Args:
+            new_screen_size (tuple): Screen size to be rescaled to.
+        """
         new_width, new_height = new_screen_size
         original_width, original_height = self.original_screen_size
         
@@ -42,6 +48,7 @@ class UIElement(Entity):
         self.image = pygame.transform.scale(self.image, new_size)
         self.rect.size = new_size
 
+        # Setting origin of position
         if self.origin == 'topleft':
             self.rect.topleft = self.position
         if self.origin == 'center':

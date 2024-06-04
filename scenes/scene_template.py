@@ -22,13 +22,16 @@ class SceneTemplate:
         self.init_objects()
 
     def init_objects(self) -> None:
+        """Place object instances within this method."""
         pass
 
     def update(self) -> None:
+        """Update the scene."""
         self.sprites.update()
         self.user_interface.update()
 
     def draw(self) -> None:
+        """Draw the scene."""
         self.game.screen.fill((self.background_color))
 
         self.sprites.draw(self.game.screen)

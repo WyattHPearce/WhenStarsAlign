@@ -14,14 +14,14 @@ class World1(SceneTemplate):
 
     def init_objects(self) -> None:
         super().init_objects()
-        self.block = Entity(
+        self.block1 = Entity(
             [self.sprites], 
             image=self.block_atlas_textures['grass'], 
             position=(globals.TILESIZE,globals.screen_height/2)
         )
 
     def update(self) -> None:
-        self.block.position.x += (3 * globals.delta_time)
+        self.block1.position.x += (3 * globals.delta_time)
 
         super().update()
         

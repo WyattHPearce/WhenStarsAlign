@@ -15,11 +15,26 @@ def init_scenes(game) -> None:
     }
 
 def set_scene(scene_name: str) -> None:
+    """Set the current scene.
+
+    Args:
+        scene_name (str): Name of scene to be set as current.
+    """
     global current_scene
     current_scene = scene_name
 
 def update_scene(scene_name: str) -> None:
+    """Updates the given scene.
+
+    Args:
+        scene_name (str): Name of scene to be updated.
+    """
     scenes[scene_name].update()
 
 def draw_scene(scene_name: str) -> None:
+    """Draws the given scene.
+
+    Args:
+        scene_name (str): Name of scene to be drawn.
+    """
     scenes[scene_name].draw()
