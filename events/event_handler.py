@@ -12,7 +12,17 @@ event_flags: dict = {
     'clicked': {}
 }
 
+def handle_events(game) -> None:
+    """The implementation of what should happen when events are triggered."""
+    # Event handling
+    poll_events()
+    if has_quit() or key_down(pygame.K_ESCAPE):
+        game.running = False
+    if window_resized():
+        globals.update_window_size_globals(game)
+
 def poll_events() -> None:
+    """Updates which events have been triggered"""
     global events, event_flags
     events = pygame.event.get()
 
