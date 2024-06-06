@@ -3,17 +3,16 @@ import sys
 # Third-Party Imports
 import pygame
 # Local Imports
-import globals
-import textures.texture_manager as texture_manager
-import events.event_handler as event_handler
-# Scenes
-import scenes.scene_manager as scene_manager
+from utilities import globals
+from textures import texture_manager
+from events import event_handler
+from scenes import scene_manager
 
 class Game:
     def __init__(self) -> None:
         pygame.init()
 
-        # Create Screen
+        # Create Screen 
         self.screen: pygame.Surface = pygame.display.set_mode(
             (globals.screen_width, globals.screen_height), # Screen size
             pygame.RESIZABLE, # Screen is resizable
@@ -33,7 +32,7 @@ class Game:
 
         # Initialize game scenes
         scene_manager.init_scenes(self)
-        scene_manager.set_scene('menu')
+        scene_manager.set_scene('world1')
 
     def run(self) -> None:
         while self.running:

@@ -1,8 +1,7 @@
-# Standard Imports
 # Third-Party Imports
 import pygame
 # Local Imports
-import globals
+from utilities import globals
 
 events: list = []
 event_flags: dict = {

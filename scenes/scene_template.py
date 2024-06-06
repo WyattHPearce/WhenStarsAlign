@@ -1,10 +1,9 @@
-# Standard Imports
 # Third-Party Imports
 import pygame
 # Local Imports
-import globals
+from utilities import globals
 from entity import Entity
-import textures.texture_manager as texture_manager
+from textures import texture_manager
 
 class SceneTemplate:
     def __init__(self, game) -> None:
