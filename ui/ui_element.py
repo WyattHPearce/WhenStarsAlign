@@ -1,8 +1,7 @@
-# Standard imports
 # Third-Party Imports
 import pygame
 # Local Imports
-import globals
+from utilities import globals
 from entity import Entity
 
 # Custom Sprite Class

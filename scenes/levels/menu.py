@@ -1,11 +1,10 @@
-# Standard Imports
 # Third-Party Imports
 import pygame
 # Local Imports
-import globals
-from scenes.scene_template import SceneTemplate
+from utilities import globals
+from ..scene_template import SceneTemplate
 from entity import Entity
-from ui.ui_element import UIElement
+from ui import UIElement
 
 class Menu(SceneTemplate):
     def __init__(self, game) -> None:

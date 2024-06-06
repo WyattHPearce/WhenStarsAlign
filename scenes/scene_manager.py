@@ -1,8 +1,6 @@
-# Standard Imports
-# Third-Party Imports
 # Local Imports
-from scenes.levels.menu import Menu
-from scenes.levels.world1 import World1
+from .levels.menu import Menu
+from .levels.world1 import World1
 
 current_scene: str = None
 scenes: dict = None

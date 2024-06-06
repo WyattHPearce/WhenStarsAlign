@@ -1,9 +1,8 @@
-# Standard Imports
 # Third-Party Imports
 import pygame
 # Local Imports
-import globals
-import textures.texture_data as texture_data
+from utilities import globals
+from . import texture_data
 
 solo_textures: dict = None
 block_textures: dict = None

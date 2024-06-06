@@ -1,12 +1,10 @@
 # Standard Imports
 import time
-# Third-Party Imports
-# Local Imports
 
 # Graphics Settings
 screen_width: int = 1280
 screen_height: int = 720
-max_framerate: int = 120
+max_framerate: int = 60
 
 # Framerate independence
 target_framerate: int = 60
