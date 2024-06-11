@@ -14,7 +14,7 @@ class Game:
 
         # Create Screen 
         self.screen: pygame.Surface = pygame.display.set_mode(
-            (globals.screen_width, globals.screen_height), # Screen size
+            (globals.ORIGINAL_SCREEN_WIDTH,globals.ORIGINAL_SCREEN_HEIGHT), # Screen size
             pygame.RESIZABLE, # Screen is resizable
             pygame.SCALED,
             vsync=1
@@ -32,7 +32,7 @@ class Game:
 
         # Initialize game scenes
         scene_manager.init_scenes(self)
-        scene_manager.set_scene('world1')
+        scene_manager.set_scene('menu')
 
     def run(self) -> None:
         while self.running:

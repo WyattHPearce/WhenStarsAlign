@@ -12,10 +12,10 @@ class Menu(SceneTemplate):
         self.background_color = (50,50,50)
 
     def init_objects(self) -> None:
-        self.box = UIElement(
+        UIElement(
             [self.user_interface], 
             image=pygame.Surface((100,30)), 
-            position=(globals.screen_width/2, globals.screen_height/2), 
-            origin='center',
-            color=(255,255,255)
+            position=(globals.ORIGINAL_SCREEN_WIDTH/2, globals.ORIGINAL_SCREEN_HEIGHT/2), 
+            origin='center'
         )
+        UIElement([self.user_interface])

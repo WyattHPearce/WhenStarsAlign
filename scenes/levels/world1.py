@@ -16,7 +16,7 @@ class World1(SceneTemplate):
         self.block1 = Entity(
             [self.sprites], 
             image=self.block_atlas_textures['grass'], 
-            position=(globals.TILESIZE,globals.screen_height/2)
+            position=(globals.TILESIZE,globals.ORIGINAL_SCREEN_HEIGHT/2)
         )
 
     def update(self) -> None:
