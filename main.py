@@ -7,6 +7,7 @@ from utilities import globals
 from textures import texture_manager
 from events import event_handler
 from scenes import scene_manager
+from ui import fonts
 
 class Game:
     def __init__(self) -> None:
@@ -24,15 +25,18 @@ class Game:
         # Initialize textures in texture manager
         texture_manager.init_textures()
 
+        # Initialize fonts in the ui.font module
+        fonts.init_fonts()
+
+        # Initialize game scenes
+        scene_manager.init_scenes(self)
+        scene_manager.set_scene('menu')
+
         # Create clock
         self.clock = pygame.time.Clock()
 
         # Gameloop and Framerate Independence
         self.running: bool = True
-
-        # Initialize game scenes
-        scene_manager.init_scenes(self)
-        scene_manager.set_scene('menu')
 
     def run(self) -> None:
         while self.running:

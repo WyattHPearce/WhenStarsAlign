@@ -6,22 +6,25 @@ from entity import Entity
 
 # Custom Sprite Class
 class UIElement(Entity):
-    def __init__(self, groups, image=pygame.Surface((50, 50)), position: tuple = (0, 0), origin: str = 'topleft') -> None:
+    def __init__(self, groups, background_color: tuple = (255,255,255), size: tuple = (50,50), position: tuple = (0, 0), origin: str = 'topleft') -> None:
         """Base UI element/ Handles basic scaling and screen snapping.
 
         Args:
             groups (list): List of pygame.sprite.Group() groups
             image (pygame.Surface, optional): Defaults to pygame.Surface((50, 50)).
+            background_color (tuple, optional): Defaults to white. Background color of element.
+            size (tuple, optional): Defaults to (50,50). Width and height of element.
             position (tuple, optional): Defaults to (0, 0).
             origin (str, optional): The point on the image used as the anchor for positioning.
                 Defaults to 'topleft'.
                 Available options: 'topleft', 'bottomleft', 'topright', 'bottomright', 'midtop', 'midleft', 'midbottom', 'midright', 'center'
         """
-        super().__init__(groups, image, position)
+        super().__init__(groups, image=pygame.Surface(size), position=position)
         self.origin = origin
+        self.size = size
 
-        # Temp coloring for visual testing
-        self.image.fill((255,255,255))
+        # Background color
+        self.image.fill(background_color)
 
         # Resizing
         self.original_position = pygame.math.Vector2(position)
@@ -31,6 +34,7 @@ class UIElement(Entity):
         """Augmentation of super class update method."""
         super().update()
         self.scale_to_screen((globals.current_screen_width, globals.current_screen_height))
+
     
     def scale_to_screen(self, new_screen_size: tuple) -> None:
         """Takes a new screensize and rescales / re-positions the UIElement based on original screen sizes.
@@ -54,9 +58,8 @@ class UIElement(Entity):
         scale = min(scale_x, scale_y)
 
         # Scale the size
-        new_width = int(self.original_size[0] * scale)
-        new_height = int(self.original_size[1] * scale)
-        self.image = pygame.transform.scale(self.image, (new_width, new_height))
+        self.size = (int(self.original_size[0] * scale), int(self.original_size[1] * scale))
+        self.image = pygame.transform.scale(self.image, self.size)
 
         # Update the rect size
         self.rect.size = self.image.get_size()
