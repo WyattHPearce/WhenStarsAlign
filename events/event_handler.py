@@ -19,6 +19,8 @@ def handle_events(game) -> None:
         game.running = False
     if window_resized():
         globals.update_window_size_globals(game)
+    if key_down(pygame.K_F11):
+        pygame.display.toggle_fullscreen()
 
 def poll_events() -> None:
     """Updates which events have been triggered"""
